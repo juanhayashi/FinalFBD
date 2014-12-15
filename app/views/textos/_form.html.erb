@@ -1,0 +1,29 @@
+<%= form_for(@texto) do |f| %>
+  <% if @texto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@texto.errors.count, "error") %> prohibited this texto from being saved:</h2>
+
+      <ul>
+      <% @texto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :twitt %><br>
+    <%= f.text_field :twitt %>
+  </div>
+  <div class="field">
+    <%= f.label :idioma %><br>
+    <%= f.text_field :idioma %>
+  </div>
+  <div class="field">
+    <%= f.label :id_twitt %><br>
+    <%= f.number_field :id_twitt %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

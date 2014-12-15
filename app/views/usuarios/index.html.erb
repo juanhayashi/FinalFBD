@@ -1,0 +1,27 @@
+<h1>Listing usuarios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User twitt</th>
+      <th>Username</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @usuarios.each do |usuario| %>
+      <tr>
+        <td><%= usuario.id_UTwit %></td>
+        <td><%= usuario.username %></td>
+        <td><%= link_to "Ver", usuario %></td>
+        <td><%= link_to 'Editar', edit_usuario_path(usuario) %></td>
+        <td><%= link_to 'Destruir', usuario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Usuario', new_usuario_path %>

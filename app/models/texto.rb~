@@ -1,0 +1,5 @@
+class Texto < ActiveRecord::Base
+	belongs_to :usuario
+	has_one :fecha, dependent: :destroy
+	validates :twitt, uniqueness: true
+end

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pais nombre:</strong>
+  <%= @lugar.pais_nombre %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @lugar.lat %>
+</p>
+
+<p>
+  <strong>Long:</strong>
+  <%= @lugar.long %>
+</p>
+
+<%= link_to 'Edit', edit_lugar_path(@lugar) %> |
+<%= link_to 'Back', lugars_path %>

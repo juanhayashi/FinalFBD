@@ -1,0 +1,91 @@
+<center><IMG SRC="/assets/titulo.png"></center>
+<hr>
+<ul>
+  <br><br><br>
+
+<% @a = Texto.where('twitt like ?', '%NoAlaborto%').count %>
+<% @b = Texto.where('twitt like ?', '%SiAlaborto%').count %>
+<% @AF = "A Favor"%>
+<% @EC = "En Contra"%>
+
+<div class="row">
+  <div class="col-xs-6">
+    <h3>Chile</h3>
+    <%= pie_chart [[@EC, @a], [@AF, @b]] %>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-6">
+    <h3>Uruguay</h3>
+    <%= pie_chart [[@AF, @b], [@EC, @a]] %>
+  </div>
+</div>
+
+<hr>
+
+<% @a = Texto.where('twitt like ?', '%vidasi%').count %>
+<% @b = Texto.where('twitt like ?', '%derechoadecidir%').count %>
+<div class="row">
+  <div class="col-xs-6">
+    <h3>Mexico</h3>
+    <%= pie_chart [[@AF, @b], [@EC, @a]] %>
+  </div>
+</div>
+
+<hr>
+
+<% @a = Texto.where('twitt like ?', '%abortocero%').count %>
+<% @b = Texto.where('twitt like ?', '%mibomboesmio%').count %>
+<div class="row">
+  <div class="col-xs-6">
+    <h3>España</h3>
+    <%= pie_chart [[@AF, @b], [@EC, @a]] %>
+  </div>
+</div>
+
+<hr>
+
+<% @a = Texto.where('twitt like ?', '%provie%').count %>
+<% @b = Texto.where('twitt like ?', '%IVGmoncorpsmondroit%').count %>
+<div class="row">
+  <div class="col-xs-6">
+    <h3>Francia</h3>
+    <%= pie_chart [[@AF, @b], [@EC, @a]] %>
+  </div>
+</div>
+
+<hr>
+<br><br>
+
+  <center>
+  <form action="/textos" method="get">
+  <input type="submit" value="Ver Textos">
+  </form>  
+  <br>
+  <form action="/usuarios" method="get">
+  <input type="submit" value="Ver Usuarios">
+  </form>  
+  <br>
+  <form action="/lugars" method="get">
+  <input type="submit" value="Ver Paises">
+  </form>  
+  <br>
+  <form action="/fechas" method="get">
+  <input type="submit" value="Ver Fechas">
+  </form>  
+  <br>
+  <form action="/descargar/index" method="get">
+  <input type="submit" value="Descargar Tweets">
+  </form>  
+  <br>
+  </center>
+</ul>
+<br><br>
+<hr>
+<center><IMG SRC="/assets/cinta.jpg"></center>
+<hr>
+
+

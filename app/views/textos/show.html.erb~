@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Twitt:</strong>
+  <%= @texto.twitt %>
+</p>
+
+<p>
+  <strong>Idioma:</strong>
+  <%= @texto.idioma %>
+</p>
+
+<p>
+  <strong>Twitt:</strong>
+  <%= @texto.twitt_id %>
+</p>
+
+<%= link_to 'Edit', edit_texto_path(@texto) %> |
+<%= link_to 'Back', textos_path %>

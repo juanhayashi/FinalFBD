@@ -1,0 +1,36 @@
+class DescargarController < ApplicationController
+  def index
+	require 'twitter'
+	client = Twitter::REST::Client.new do |config|
+  		config.consumer_key        = "PJR31VWllWo0Sp8CzYbqfpgAW"
+  		config.consumer_secret     = "iMeATPsJw44kRD0oAl6Utoqyb8Cy68qNEp2P7znpzvBetL1HaX"
+  		config.access_token        = "66786004-lxh7Ij6LhtzFCnEcUeI0VaGfJcvLYqaEsVasdRI91"
+  		config.access_token_secret = "uyqCbzikB8JUm2PYyyhpEKgolce2qPeopDKPyxD4NYUlW"	
+	end
+	#@busqueda = client.search('aborto', :geocode =>"46.28116,2.83447,30km").take(100).collect
+	#@busqueda = client.search("#aborto", {:geocode => "-33.440846, -70.646386, 200km", :result_type  => "mixed"}).take(10).collect
+	#@busqueda = client.search("#Aborto -rt").take(10).collect
+	@busqueda = client.search("#aborto -rt").take(25).collect
+
+	@busqueda.each do |tweet|
+		if (@q=Usuario.where(:Id_UTwit => tweet.user.id).first) == nil
+			@user = Usuario.create("id_UTwit" => tweet.user.id,"username" => tweet.user.name)
+			#if (@t = Texto.where(:id_twitt => tweet.id).first) == nil
+				@txt = Texto.create("twitt" => tweet.text, "idioma" => tweet.lang, "id_twitt" => tweet.id, "usuario" => @user)
+				@lugar=Lugar.create("pais_nombre" => tweet.user.location,"lat" => tweet.geo.coordinates[0], "long" => tweet.geo.coordinates[1], "texto" => @txt)
+				@fecha=Fecha.create("fecha" => tweet.created_at, "texto" => @txt)
+			#end
+		
+		else 
+			#if (@t = Texto.where(:id_twitt => tweet.id).first) == nil
+				@txt = Texto.create("twitt" => tweet.text, "idioma" => tweet.lang, "id_twitt" => tweet.id, "usuario" => @q)
+				@lugar=Lugar.create("pais_nombre" => tweet.user.location,"lat" => tweet.geo.coordinates[0], "long" => tweet.geo.coordinates[1], "texto" => @txt)
+				@fecha=Fecha.create("fecha" => tweet.created_at, "texto" => @txt)
+
+			#end
+		end
+		
+	end
+  end
+end
+
