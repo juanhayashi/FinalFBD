@@ -40,5 +40,4 @@ gem 'spring',        group: :development
 
 gem 'twitter'
 gem 'chartkick'
-gem 'gruff'
 
